@@ -80,9 +80,10 @@ public class XrayMain implements ClientModInitializer, HudRenderCallback, EndTic
 
     private int fullbrightColor = 0;
 
-    private final SimpleOption<Double> gammaBypass = new SimpleOption<>("options.gamma", SimpleOption.emptyTooltip(), (optionText, value) -> Text.empty(), SimpleOption.DoubleSliderCallbacks.INSTANCE.withModifier(
-            d -> (double) getInternalFullbrightState(), d -> 1
-    ), 0.5, value -> {
+    private final SimpleOption<Double> gammaBypass = new SimpleOption<>("options.gamma", SimpleOption.emptyTooltip(), (optionText, value) -> Text.empty(), 
+            (value, text) -> (double) getInternalFullbrightState(), 
+            (value) -> 1.0, 
+            0.5, value -> {
     });
 
     private final IColorObject fullbrightMode = new IColorObject() {
